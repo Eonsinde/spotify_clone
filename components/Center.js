@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from 'next-auth/react';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import Image from "next/image";
 import { shuffle } from "lodash";
@@ -42,10 +42,13 @@ const Center = () => {
     // console.log(currentPlayList)
 
     return (
-        <section className='flex-grow text-white'>
-            <header className='relative'>
+        <section className='flex-grow text-white h-screen'>
+            <header className={`relative h-[35vh] bg-gradient-to-b to-app-theme ${color}`}>
                 <div className='absolute top-5 right-8'>
-                    <div className='flex items-center bg-app-theme space-x-3 cursor-pointer rounded-full p-1 pr-2 opacity-90 hover:opacity-80 transition-all ease-in-out'>
+                    <div 
+                        className='flex items-center bg-app-theme space-x-3 cursor-pointer rounded-full p-1 pr-2 opacity-90 hover:opacity-80 transition-all ease-in-out'
+                        onClick={() => signOut()}
+                    >
                         {
                             !(status === 'loading') ?
                             <>
@@ -64,13 +67,13 @@ const Center = () => {
                         }
                     </div>
                 </div>
-                <main className={`flex items-end space-x-7 p-8 bg-gradient-to-b to-app-theme ${color} h-80 text-white padding-8`}>
+                <main className={`h-full flex items-end space-x-7 p-8 text-white padding-8`}>
                     <Image 
                         width={200}
                         height={200}
                         className='object-cover' 
                         src={currentPlayList?.images?.[0]?.url} 
-                        alt='spotify logo' 
+                        alt={`${currentPlayList?.name} cover`} 
                     />
                     <div>
                         <p className='text-[1rem]'>PLAYLIST</p>
@@ -78,7 +81,7 @@ const Center = () => {
                     </div>
                 </main>
             </header>
-            <div>
+            <div className='h-[65vh] py-4 overflow-y-scroll scrollbar-hide'>
                 <Songs />
             </div>
         </section>
