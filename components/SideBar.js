@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { HomeIcon, MagnifyingGlassIcon, DocumentIcon, PlusCircleIcon, HeartIcon, RssIcon, Square3Stack3DIcon } from '@heroicons/react/24/outline';
 import { useSession } from 'next-auth/react';
+import { HomeIcon, MagnifyingGlassIcon, PlusCircleIcon, RssIcon, Square3Stack3DIcon } from '@heroicons/react/24/outline';
+import { HeartIcon } from '@heroicons/react/24/solid';
 import useSpotify from '../hooks/useSpotify';
 import { playlistIdState } from '../atoms/playlistAtoms';
+import SpotifyLogo from './SpotifyLogo';
+
 
 
 const SideBar = () => {
@@ -21,12 +24,11 @@ const SideBar = () => {
     }, [session, spotifyApi])
 
     return ( 
-        <div className='text-gray-500 p-5 text-sm md:text-md lg:text-lg border-r border-gray-900 overflow-y-scroll h-screen sm:basis-[12rem] md:basis-[13rem] lg:basis-[18rem] hidden md:inline-flex scrollbar-hide'>
-            <div className='space-y-4'>
-                {/* <button className='flex items-center space-x-2 hover:text-white' onClick={() => signOut()}>
-                    <HomeIcon className='h-5 w-5' />
-                    <p>Logout</p>
-                </button> */}
+        <div className='text-gray-500 p-5 text-sm md:text-md lg:text-lg border-r border-gray-900 overflow-y-scroll h-[90vh] sm:basis-[12rem] md:basis-[13rem] lg:basis-[18rem] hidden md:inline-flex scrollbar-hide'>
+            <div className='space-y-6 basis-full'>
+                <div>
+                    <SpotifyLogo className='text-white h-[40px]' />
+                </div>
                 <button className='flex items-center space-x-2 hover:text-white'>
                     <HomeIcon className='h-5 w-5' />
                     <p>Home</p>
@@ -39,7 +41,7 @@ const SideBar = () => {
                     <Square3Stack3DIcon className='h-5 w-5' />
                     <p>Your Library</p>
                 </button>
-                <hr className='border-t-[0.1px] border-gray-900' />
+                <hr className='border-t-[0.1px] w-full border-gray-900' />
 
                 <button className='flex items-center space-x-2 hover:text-white'>
                     <PlusCircleIcon className='h-5 w-5' />

@@ -6,10 +6,10 @@ import Song from "./Song";
 
 const Songs = () => {
     const currentPlaylist = useRecoilValue(playListState)
-    console.log(currentPlaylist)
+    // console.log(currentPlaylist)
 
     return ( 
-        <div className="text-white px-8 flex flex-col space-y-1 pb-2">
+        <div className="text-white px-4 md:px-8 flex flex-col space-y-1 pb-2">
             {currentPlaylist?.tracks.items.map((track, index) => (
                 <Song key={track.track.id} track={track} order={index} />
             ))}

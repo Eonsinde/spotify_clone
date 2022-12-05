@@ -44,7 +44,7 @@ const Center = () => {
     return (
         <section className='flex-grow text-white h-screen'>
             <header className={`relative h-[35vh] bg-gradient-to-b to-app-theme ${color}`}>
-                <div className='absolute top-5 right-8'>
+                <div className='absolute top-3 right-4 md:top-5 md:right-8'>
                     <div 
                         className='flex items-center bg-app-theme space-x-3 cursor-pointer rounded-full p-1 pr-2 opacity-90 hover:opacity-80 transition-all ease-in-out'
                         onClick={() => signOut()}
@@ -67,7 +67,7 @@ const Center = () => {
                         }
                     </div>
                 </div>
-                <main className={`h-full flex items-end space-x-7 p-8 text-white padding-8`}>
+                <main className={`h-full flex items-end space-x-7 p-4 md:p-8 text-white padding-8`}>
                     <Image 
                         width={200}
                         height={200}
@@ -77,7 +77,7 @@ const Center = () => {
                     />
                     <div>
                         <p className='text-[1rem]'>PLAYLIST</p>
-                        <h1 className='text-xl md:text-3xl xl:text-5xl'>{currentPlayList?.name}</h1>
+                        <h1 className='text-2xl md:text-3xl xl:text-5xl'>{currentPlayList?.name}</h1>
                     </div>
                 </main>
             </header>
