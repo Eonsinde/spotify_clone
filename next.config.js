@@ -9,6 +9,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: '**.papareact.com',
       },
+      {
+        protocol: 'https',
+        hostname: '**.scdn.co',
+      },
     ],
   },
 }

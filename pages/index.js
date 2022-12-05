@@ -1,33 +1,42 @@
+import { getSession } from 'next-auth/react'
 import Head from 'next/head'
-import Image from 'next/image'
+import Center from '../components/Center'
 import SideBar from '../components/SideBar'
 
 
 
 export default function Home() {
   return (
-    <div className='bg-[#0e0e0e] h-screen overflow-hidden'>
-      {/* <Head>
-        <title>Spotify</title>
-        <meta name="description" content="Create by eonsinde" />
+    <>
+      <Head>
+        <title>Spotify Clone | Eonsinde</title>
+        <meta name="description" content="spotify clone with nextjs by olasinde enoch" />
+        <meta name="keywords" content="spotify clone, spotify clone with nextjs, olasinde enoch's spotify clone, spotify with nextjs eonsinde" />
+        <meta name="author" content="eonsinde" />
         <link rel="icon" href="/favicon.ico" />
-      </Head> */}
+      </Head>
+      <div className='bg-[#0e0e0e] h-screen w-screen overflow-hidden'>
+        <main className='flex'>
+          <SideBar />
+          <Center />
+        </main>
 
-      <main className=''>
-        {/* sidebar */}
-        <SideBar />
-
-        {/* viewport */}
         <div>
-          <h1 className='text-3xl'>I{'`'}m The Viewport</h1>
+          {/* player */}
         </div>
-      </main>
-
-      <div>
-        {/* player */}
       </div>
-    </div>
+    </>
   )
 }
 
 Home.auth = false
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+
+  return {
+    props: {
+      session
+    }
+  }
+}

@@ -17,21 +17,24 @@ export async function middleware(req) {
         if (!token && pathname !== '/login') {
             const url = req.nextUrl.clone()
             url.pathname = '/login'
-            console.log(new URL('/login', req.url));
+            // console.log(new URL('/login', req.url));
             return NextResponse.redirect(url);
-        } else if (token) {
+        }
+        
+        if (token) {
             return NextResponse.next();
         }
     } 
-    
+
+    // request to login page
     if (pathname === '/login') {
         if (token) {
             const url = req.nextUrl.clone()
             url.pathname = '/'
-            console.log(new URL('/', req.url));
+            // console.log(new URL('/', req.url));
             return NextResponse.redirect(url);
-        } else if (token) {
-            return NextResponse.next();
-        }
+        } 
+        
+        return NextResponse.next();
     }
 }

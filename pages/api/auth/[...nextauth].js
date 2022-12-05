@@ -5,6 +5,7 @@ import spotifyApi, { LOGIN_URL } from "../../../lib/spotify"
 
 const refreshAccessToken = async (token) => {
     try {
+        console.log("trying to refresh access token")
         spotifyApi.setAccessToken(token.accessToken);
         spotifyApi.setRefreshToken(token.refreshToken);
 
